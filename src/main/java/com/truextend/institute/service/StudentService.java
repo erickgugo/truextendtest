@@ -1,6 +1,8 @@
 package com.truextend.institute.service;
 
+import com.truextend.institute.entity.Class;
 import com.truextend.institute.entity.Student;
+import com.truextend.institute.repository.ClassRepository;
 import com.truextend.institute.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,15 +19,14 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public Student getById(Long id) {
-        return studentRepository.findById(id).get();
+    public List<Student> getClassesByStudent(Long student_id) {
+        return studentRepository.getClassesByStudent(student_id);
     }
 
-    /**
-     * Method used to save and merge Students
-     * @param student
-     * @return Student
-     */
+    public Student getById(Long student_id) {
+        return studentRepository.findById(student_id).get();
+    }
+
     public Student save(Student student) {
         return studentRepository.save(student);
     }

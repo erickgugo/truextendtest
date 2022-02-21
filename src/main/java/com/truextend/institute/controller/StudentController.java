@@ -23,6 +23,14 @@ public class StudentController {
         return ResponseEntity.ok(students);
     }
 
+    @GetMapping("classesBy/{studentId}")
+    public ResponseEntity<List<Student>> getClassesByStudent(@PathVariable("studentId") long studentId) {
+        List<Student> students = studentService.getClassesByStudent(studentId);
+        if (students.isEmpty())
+            return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(students);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Student> getUser(@PathVariable("id") long id) {
         Student student = studentService.getById(id);
